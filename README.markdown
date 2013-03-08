@@ -11,11 +11,20 @@ If you're integrating RTurk with a Rails app, do yourself a favor and check out 
 
 ## Installation
 
-```gem install rturk```
+RTurk is available as a gem, to install it just install the gem:
+
+    gem install rturk
+
+If you're using Bundler, add the gem to Gemfile.
+
+    gem 'rturk'
+
+Then run bundle install.
+
 
 ## Use
 
-Let's say you have a form at "http://myapp.com/turkers/add_tags" where Turkers can add some tags to items in your catalogue.
+Let's say you have a form at ```http://myapp.com/turkers/add_tags``` where Turkers can add some tags to items in your catalogue.
 
 ### Creating HIT's
 
