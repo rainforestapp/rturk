@@ -1,5 +1,5 @@
 # RTurk - A ridiculously simple Mechanical Turk library in Ruby
-![Travis](https://secure.travis-ci.org/mdp/rturk.png)
+![Travis](https://secure.travis-ci.org/rainforestapp/rturk.png)
 
 ## What's it do?!?
 
