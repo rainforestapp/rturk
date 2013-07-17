@@ -6,7 +6,7 @@ module RTurk
     
     def to_params
       {'QualificationTypeId' => qualification_type_id,
-       'WorkerId' => subject_id,
+       'SubjectId' => subject_id,
        'IntegerValue' => integer_value}
     end
   end
