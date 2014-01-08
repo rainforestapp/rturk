@@ -46,7 +46,11 @@ module RTurk
 
         RTurk.logger.debug "Sending request:\n\t #{credentials.host}?#{querystring}"
         begin
-          RestClient.post(credentials.host, querystring)
+          opts = {
+            :verify_ssl => OpenSSL::SSL::VERIFY_PEER
+          }
+          res = RestClient::Resource.new(credentials.host, opts)
+          res.post(querystring)
         rescue RestClient::Exception => e
           raise ServiceUnavailable if e.http_code == 503
           raise
