@@ -1,3 +1,3 @@
 module RTurk
-  VERSION = "2.10.2"
+  VERSION = "2.12.1"
 end

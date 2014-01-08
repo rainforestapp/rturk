@@ -9,8 +9,9 @@ Gem::Specification.new do |s|
   s.summary = "Mechanical Turk API Wrapper"
 
   s.authors = ["Mark Percival", "Zach Hale", "David Balatero", "Rob Hanlon"]
-  s.date = "2011-11-20"
-  s.email = "mark@mpercival.com"
+  s.date = "2013-08-19"
+  s.email = "m@mdp.im"
+  s.license = 'MIT'
   s.extra_rdoc_files = [
     "LICENSE",
     "README.markdown"
@@ -25,8 +26,9 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
-  s.add_dependency('rest-client', ">= 1.4.0")
-  s.add_dependency('nokogiri', ">= 1.4.1")
+  s.add_dependency('rest-client')
+  s.add_dependency('nokogiri')
+  s.add_dependency('erector')
 
   # Development dependencies
   s.add_development_dependency('rspec', "~> 1.3.1")

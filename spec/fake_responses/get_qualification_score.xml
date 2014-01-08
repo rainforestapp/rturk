@@ -1,7 +1,4 @@
 <GetQualificationScoreResult>
-  <Request>
-    <IsValid>True</IsValid>
-  </Request>
   <Qualification>
     <QualificationTypeId>789RVWYBAZW00EXAMPLE</QualificationTypeId>
     <SubjectId>AZ3456EXAMPLE</SubjectId>

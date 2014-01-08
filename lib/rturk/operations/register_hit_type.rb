@@ -1,7 +1,8 @@
 module RTurk
   class RegisterHITType < Operation
 
-    attr_accessor :title, :description, :reward, :currency, :duration, :keywords, :auto_approval
+    attr_accessor :title, :description, :reward, :currency, :duration, :keywords, :auto_approval_delay
+    alias_attr :auto_approval, :auto_approval_delay
 
 
     # @param [Symbol, Hash] qualification_key opts The unique qualification key
@@ -54,7 +55,7 @@ module RTurk
           'Reward.Amount' => reward,
           'Reward.CurrencyCode' => (currency || 'USD'),
           'Keywords' => keyword_string,
-          'AutoApprovalDelayInSeconds' => auto_approval }
+          'AutoApprovalDelayInSeconds' => auto_approval_delay }
       end
   end
 

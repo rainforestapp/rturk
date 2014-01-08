@@ -1,5 +1,6 @@
 # RTurk - A ridiculously simple Mechanical Turk library in Ruby
-![Travis](https://secure.travis-ci.org/rainforestapp/rturk.png)
+
+![Build Status](https://secure.travis-ci.org/rainforestapp/rturk.png)
 
 ## What's it do?!?
 
@@ -11,8 +12,7 @@ If you're integrating RTurk with a Rails app, do yourself a favor and check out 
 
 ## Installation
 
-RTurk is available as a gem, to install it just install the gem:
-
+    # Requires Ruby > 1.9.2
     gem install rturk
 
 If you're using Bundler, add the gem to Gemfile.
@@ -33,7 +33,7 @@ require 'rturk'
 
 RTurk.setup(YourAWSAccessKeyId, YourAWSAccessKey, :sandbox => true)
 hit = RTurk::Hit.create(:title => "Add some tags to a photo") do |hit|
-  hit.assignments = 2
+  hit.max_assignments = 2
   hit.description = 'blah'
   hit.question("http://myapp.com/turkers/add_tags",
                :frame_height => 1000)  # pixels for iframe
@@ -96,6 +96,10 @@ Here's a quick peak at what happens on the Mechanical Turk side.
 
 A worker takes a look at your hit. The page will contain an iframe with your question URL loaded inside of it.
 
+If you want to use an Amazon-hosted [QuestionForm](http://docs.amazonwebservices.com/AWSMechTurk/2008-08-02/AWSMturkAPI/ApiReference_QuestionFormDataStructureArticle.html), do
+
+    hit.question_form "<Question>What color is the sky?</Question>" # not the real format
+
 Amazon will append the AssignmentID parameter to the URL for your own information. In preview mode this will look like
 
     http://myapp.com/turkers/add_tags?item_id=1234&AssignmentId=ASSIGNMENT_ID_NOT_AVAILABLE
@@ -108,6 +112,11 @@ The form in your page MUST CONTAIN the AssignmentID in a hidden input element. Y
 
 Anything submitted in this form will be sent to Amazon and saved for your review later.
 
+## Testing
+
+    bundle install
+    rake
+
 ## More information
 
 Take a look at the [AWS MTurk developer docs](http://aws.amazon.com/documentation/mturk/) for more information. They have a complete list of API operations, all of which can be called with this library.
@@ -119,6 +128,8 @@ Take a look at the [AWS MTurk developer docs](http://aws.amazon.com/documentatio
 [Rob Hanlon](http://github.com/ohwillie)
 [Haris Amin](http://github.com/hamin)
 [Tyler](http://github.com/tkieft)
-[David Dai](http://github.com/newtonsapple)
+[David Dai](http://github.com/newtonsapple
 [Russell Smith](http://github.com/ukd1)
+[Alex Chaffee](http://github.com/alexch)
+[Simon Mathieu](http://github.com/smathieu)
 

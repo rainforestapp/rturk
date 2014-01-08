@@ -11,6 +11,7 @@ describe RTurk::UpdateQualificationScore do
       :qualification_type_id => '789RVWYBAZW00EXAMPLE', :subject_id => "XXX", :integer_value => 1
     }
   end
+
   it "should ensure required params" do
     lambda{RTurk::UpdateQualificationScore()}.should raise_error RTurk::MissingParameters
   end
@@ -18,6 +19,7 @@ describe RTurk::UpdateQualificationScore do
   it "should successfully request the operation" do
     RTurk::Requester.should_receive(:request).once.with(
       hash_including('Operation' => 'UpdateQualificationScore'))
+    
     RTurk::UpdateQualificationScore(valid_params) rescue RTurk::InvalidRequest
   end
 
@@ -25,6 +27,20 @@ describe RTurk::UpdateQualificationScore do
     response = RTurk::UpdateQualificationScore(valid_params)
     response.elements.should == 
       {"UpdateQualificationScoreResult"=>{"Request"=>{"IsValid"=>"True"}}}
+  end
+
+  it "should successfully request the operation" do
+    RTurk::UpdateQualificationScore(valid_params) rescue RTurk::InvalidRequest
+    RTurk::UpdateQualificationScore(:qualification_type_id => '789RVWYBAZW00EXAMPLE',
+                                  :subject_id => "ABCDEF1234",
+                                  :integer_value => 80) rescue RTurk::InvalidRequest
+  end
+
+  it "should parse and return the result" do
+    RTurk::UpdateQualificationScore(:qualification_type_id => '789RVWYBAZW00EXAMPLE',
+                                  :subject_id => "ABCDEF1234",
+                                  :integer_value => 80).elements.should eql(
+      {"UpdateQualificationScoreResult"=>{"Request"=>{"IsValid"=>"True"}}})
   end
 end
 
