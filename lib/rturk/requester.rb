@@ -50,6 +50,7 @@ module RTurk
             :verify_ssl => OpenSSL::SSL::VERIFY_PEER
           }
           res = RestClient::Resource.new(credentials.host, opts)
+          RTurk.api_call_lambda.call if RTurk.api_call_lambda.is_a?(Proc)
           res.post(querystring)
         rescue RestClient::Exception => e
           raise ServiceUnavailable if e.http_code == 503

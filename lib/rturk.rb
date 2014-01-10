@@ -7,7 +7,8 @@ module RTurk
   OLD_API_VERSION = '2006-05-05'
 
   class << self
-    attr_reader :access_key, :secret_key, :host
+    attr_reader :access_key, :secret_key, :host, :api_call_lambda
+    attr_writer :api_call_lambda
 
     def setup(access_key, secret_key, opts ={})
       @access_key = access_key
